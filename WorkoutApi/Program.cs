@@ -13,7 +13,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DataContext>(options => 
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddScoped<IExerciciosRepository, ExerciciosRepository>();
+builder.Services.AddScoped<IExerciciosRepository, ExerciciosRepositorio>();
 
 var app = builder.Build();
 

@@ -3,12 +3,12 @@ using WorkoutApi.Data;
 
 namespace WorkoutApi.Infra;
 
-public class RepositoryBase<TEntity> : IRepositorioBase<TEntity> where TEntity : Entity
+public class RepositorioBase<TEntity> : IRepositorioBase<TEntity> where TEntity : Entity
 {
     private readonly DataContext _dataContext;
     private readonly DbSet<TEntity> DbSet;
     
-    public RepositoryBase(DataContext dataContext)
+    public RepositorioBase(DataContext dataContext)
     {
        _dataContext = dataContext;
        DbSet = dataContext.Set<TEntity>();
