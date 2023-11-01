@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using WorkoutApi.Data;
 using WorkoutApi.Repositories;
+using WorkoutApi.Repositories.Treinos;
+using WorkoutApi.Repositories.Usuarios;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +15,17 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DataContext>(options => 
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.WithOrigins("http://localhost:3000");
+    });
+});
+
 builder.Services.AddScoped<IExerciciosRepository, ExerciciosRepositorio>();
+builder.Services.AddScoped<ITreinosRepository, TreinosRepository>();
+builder.Services.AddScoped<IUsuariosRepository, UsuariosRepository>();
 
 var app = builder.Build();
 
@@ -24,6 +36,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

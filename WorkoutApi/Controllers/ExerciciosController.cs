@@ -40,4 +40,12 @@ public class ExerciciosController : ControllerBase
 
         return Ok();
     }
+
+    [HttpPut("adicionarExercicios")]
+    public async Task<IActionResult> AdicionarExerciciosNoTreino([FromBody] List<TreinoExercicio> exercicios)
+    {
+        await _exerciciosRepository.InserirExerciciosNoTreino(exercicios);
+        
+        return Ok();
+    }
 }

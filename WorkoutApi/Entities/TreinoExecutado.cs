@@ -8,6 +8,6 @@ public class TreinoExecutado : Entity
     public int CodigoUsuario { get; set; }
     public bool Completo { get; set; }
     public DateTime DataExecucao { get; set; }
-    public Usuario Usuario { get; set; } = null!;
-    public Treino Treino { get; set; } = null!;
+    public Usuario? Usuario { get; set; }
+    public Treino? Treino { get; set; } 
 }

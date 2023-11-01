@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using WorkoutApi.DTOs;
 using WorkoutApi.Entities;
 using WorkoutApi.Repositories.Treinos;
 
@@ -24,11 +25,15 @@ public class TreinosController : ControllerBase
     }
     
     [HttpGet("{id:int}")]
-    public async Task<ActionResult<List<Treino>>> GetById([FromRoute]int id)
+    public async Task<ActionResult<TreinoResponseDTO>> GetById([FromRoute]int id)
     {
-        var treino = await _treinosRepository.GetById(id);
+        var treino = await _treinosRepository.getTreinoById(id);
 
-        return Ok(treino);
+        if (treino is null) return NoContent();
+
+        var treinoResponse = TreinoResponseDTO.fromEntity(treino);
+        
+        return Ok(treinoResponse);
     }
 
     [HttpPost]

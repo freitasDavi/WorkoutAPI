@@ -31,10 +31,10 @@ public class TreinoMap : IEntityTypeConfiguration<Treino>
             .WithOne(x => x.Treino)
             .HasForeignKey(x => x.CodigoTreino);
         
-        builder
-            .HasMany(x => x.Exercicios)
-            .WithMany(x => x.Treinos)
-            .UsingEntity<TreinoExercicio>();
+        // builder
+        //     .HasMany(x => x.Exercicios)
+        //     .WithMany(x => x.Treinos)
+        //     .UsingEntity<TreinoExercicioMap>();
 
         // Indexes
     }

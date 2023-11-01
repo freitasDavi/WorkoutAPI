@@ -5,5 +5,5 @@ namespace WorkoutApi.Repositories.Treinos;
 
 public interface ITreinosRepository : IRepositorioBase<Treino>
 {
-    
+    Task<Treino?> getTreinoById(int id);
 }

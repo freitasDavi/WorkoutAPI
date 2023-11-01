@@ -25,10 +25,10 @@ public class ExercicioMap : IEntityTypeConfiguration<Exercicio>
             .HasMaxLength(60);
 
         // Assocs
-        builder
-            .HasMany(x => x.Treinos)
-            .WithMany(x => x.Exercicios)
-            .UsingEntity<TreinoExercicio>();
+        // builder
+        //     .HasMany(x => x.Treinos)
+        //     .WithMany(x => x.Exercicios)
+        //     .UsingEntity<TreinoExercicioMap>();
         
         //Indexes
     }
